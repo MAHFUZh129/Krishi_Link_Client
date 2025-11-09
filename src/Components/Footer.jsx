@@ -36,7 +36,7 @@ const Footer = () => {
 
                     {/* Quick Links */}
                     <div className='md:mt-2 md:ml-10 '>
-                        <h3 className="text-xl font-semibold text-white pb-2 ">Quick Links</h3>
+                        <h3 className="text-xl font-semibold text-white mb-8">Quick Links</h3>
                         <ul className="space-y-3">
                             <li className="hover:text-white cursor-pointer transition duration-300">Home</li>
                             <li className="hover:text-white cursor-pointer transition duration-300">About</li>
@@ -47,7 +47,7 @@ const Footer = () => {
 
                     {/* Support */}
                     <div className='mt-2'>
-                        <h3 className="text-xl font-semibold text-white mb-4">Explore</h3>
+                        <h3 className="text-xl font-semibold text-white mb-8">Explore</h3>
                         <ul className="space-y-3">
                             <li className="hover:text-white cursor-pointer transition duration-300">What We Offer</li>
                             <li className="hover:text-white cursor-pointer transition duration-300">Latest News</li>
@@ -58,7 +58,7 @@ const Footer = () => {
                     </div>
                     {/* Services */}
                     <div className='mt-2'>
-                        <h3 className="text-xl font-semibold text-white mb-4">Service</h3>
+                        <h3 className="text-xl font-semibold text-white mb-8">Service</h3>
                         <ul className="space-y-3">
                             <li className="hover:text-white cursor-pointer transition duration-300">Agriculture Products</li>
                             <li className="hover:text-white cursor-pointer transition duration-300"> Organic Products</li>
@@ -72,7 +72,7 @@ const Footer = () => {
 
                     {/* Social Media */}
                     <div className='mt-2'>
-                        <h3 className="text-xl font-semibold text-white mb-4">Follow Us</h3>
+                        <h3 className="text-xl font-semibold text-white mb-8">Follow Us</h3>
                         <div className="flex space-x-6 text-3xl">
                             <FaFacebook className="hover:text-blue-500 cursor-pointer transition duration-300" />
                             <FaInstagram className="hover:text-pink-500 cursor-pointer transition duration-300" />
