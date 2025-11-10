@@ -1,33 +1,14 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { use } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { Link, NavLink } from 'react-router';
-import { RxAvatar } from 'react-icons/rx';
 import logo from '../assets/logo.jpg'
-import { IoLogoModelS } from 'react-icons/io';
-import { ImBoxAdd } from 'react-icons/im';
-import { GoHomeFill } from 'react-icons/go';
-import { LuRotate3D } from 'react-icons/lu';
-import { FaUser } from 'react-icons/fa';
 import { IoLogIn, IoLogOut } from 'react-icons/io5';
-import { FaGear } from 'react-icons/fa6';
 
 const Navbar = () => {
     
      const{user,logout} = use(AuthContext)
-      const [theme,setTheme]=useState(localStorage.getItem('theme') ||'light')
 
-  useEffect(()=>{
-      const html =document.querySelector('html')
-      html.setAttribute('data-theme',theme)
-      localStorage.setItem('theme',theme)
-  },[theme])
-
-  const handleTheme=(checked)=>{
-    // console.log(checked)
-    setTheme(checked?'dark':'light')
-   
-  }
         // console.log(user)
         const hanldeLogout=()=>{
               logout()
@@ -106,56 +87,14 @@ const Navbar = () => {
       </div>
       <div className="navbar-end gap-3">
         {user ? (
-          <div className="dropdown dropdown-end z-50">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-9 border-2 border-gray-300 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  referrerPolicy="no-referrer"
-                  src={user.photoURL || "https://i.ibb.co.com/CKgngnzm/download-1.png"}
-                />
-              </div>
-            </div>
-            <ul
-              tabIndex="-1"
-              className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
-            >
-              <div className=" pb-3 border-b border-b-gray-200">
-                <li className="text-sm font-bold">{user.displayName}</li>
-                <li className="text-xs">{user.email}</li>
-              </div>
-              
-              
-              <li className="mt-3">
-                <Link className='text-lg font-semibold' to={"/profile"}>
-                  <FaUser /> Profile
-                </Link>
-              </li>
-              <li >
-                <a className='text-lg font-semibold'>
-                  
-                  <FaGear /> Settings
-                </a>
-              </li>
-               <input
-           onChange={(e) => handleTheme(e.target.checked)}
-           type="checkbox"
-           defaultChecked={localStorage.getItem('theme') === "dark"}
-           className="toggle"/>
-              <li>
-                <button
-                  onClick={hanldeLogout}
-                  className="btn btn-xs text-left mt-3 bg-linear-to-r py-4 from-pink-500 to-red-500 text-lg font-semibold text-white"
-                >
-                  <IoLogOut /> Logout
-                </button>
-              </li>
-            </ul>
-          </div>
+            <Link onClick={hanldeLogout}
+            to={"/login"}
+            className="btn rounded-full border-gray-300 text-lg py-5  btn-sm bg-linear-to-r from-pink-500 to-red-500 text-white"
+          >
+            {" "}
+            <IoLogOut /> LogOut
+          </Link>
+        
         ) : (
           <Link
             to={"/login"}

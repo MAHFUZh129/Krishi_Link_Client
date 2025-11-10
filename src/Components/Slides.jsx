@@ -22,33 +22,52 @@ const Slides = () => {
 
                 {/* Slide 1 */}
                 <SwiperSlide>
-                    <div className="relative w-full h-[500px]">
-
+                    <div className="relative w-full h-[450px]">
                         <img
-                            src='https://i.ibb.co.com/ccrtPqqT/download-16.jpg'
-                            alt="Winter Pets"
+                            src="https://i.ibb.co.com/jPThBpdr/Regulatory-Updates-In-Europe-U-S-Spell-Major-Boost-For-Organic-Agriculture.jpg"
+                            alt="Cute kitten"
                             className="w-full h-full object-cover rounded-lg brightness-75"
                         />
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-blue-100/40 via-white/10 to-blue-200/30"></div>
-                        <div className="absolute inset-0 flex flex-col justify-center items-start px-10 md:px-20 text-white space-y-4">
+                        <div className="absolute inset-0 flex flex-col justify-center items-start px-10 text-white space-y-4">
                             <h2 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
-                                We Produce Natural Goods
+                                Buy Fresh, Local, Seasonal Crops
                             </h2>
-                            <p className="max-w-lg text-lg text-gray-100/90">
-                                We produce high-quality natural goods made from pure, responsibly sourced ingredients. Our products are crafted with care to support a healthier lifestyle and a cleaner planet.
+                            <p className="max-w-lg text-lg text-gray-200">
+                                We offer high-quality fresh and organic foods sourced from trusted farms. Every product is naturally grown, chemical-free, and packed with pure, wholesome goodness.
                             </p>
-                            <Link
-                                to="/services"
-                                className="btn btn-primary font-semibold mt-3"
-                            >
-                                Explore Services
+                            <Link className="btn btn-primary font-semibold mt-3">
+                                Learn More
                             </Link>
                         </div>
                     </div>
                 </SwiperSlide>
 
+               
+
                 {/* Slide 2 */}
+                <SwiperSlide>
+                    <div className="relative w-full h-[500px]">
+                        <img
+                            src="https://i.ibb.co.com/QvxyR6Rd/bop-low-input-owner-og.jpg"
+                            alt="Winter Dog"
+                            className="w-full h-full object-cover rounded-lg brightness-75"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-blue-300/40 via-white/10 to-blue-400/40"></div>
+                        <div className="absolute inset-0 flex flex-col justify-center items-start px-10 md:px-20 text-white space-y-4">
+                            <h2 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
+                                Buy Fresh Dairy Milk, Local, Seasonal Crops
+                            </h2>
+                            <p className="max-w-lg text-lg text-gray-100/90">
+                                We specialize in high-quality fresh and organic foods, carefully selected from sustainable and ethical farms. Enjoy authentic flavors, superior nutrition, and nature’s purest quality in every bite.
+                            </p>
+                            <Link className="btn btn-primary font-semibold mt-3">
+                                Contact Us
+                            </Link>
+                        </div>
+                    </div>
+                </SwiperSlide>
+                
+                {/* Slide 3 */}
                 <SwiperSlide>
                     <div className="relative w-full h-[500px]">
                         <img
@@ -66,28 +85,6 @@ const Slides = () => {
                             </p>
                             <Link className="btn btn-primary font-semibold mt-3">
                                 Learn More
-                            </Link>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                {/* Slide 3 */}
-                <SwiperSlide>
-                    <div className="relative w-full h-[500px]">
-                        <img
-                            src="https://i.ibb.co.com/QvxyR6Rd/bop-low-input-owner-og.jpg"
-                            alt="Winter Dog"
-                            className="w-full h-full object-cover rounded-lg brightness-75"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-b from-blue-300/40 via-white/10 to-blue-400/40"></div>
-                        <div className="absolute inset-0 flex flex-col justify-center items-start px-10 md:px-20 text-white space-y-4">
-                            <h2 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
-                                High Quality Fresh And Organic Foods
-                            </h2>
-                            <p className="max-w-lg text-lg text-gray-100/90">
-                                We specialize in high-quality fresh and organic foods, carefully selected from sustainable and ethical farms. Enjoy authentic flavors, superior nutrition, and nature’s purest quality in every bite.
-                            </p>
-                            <Link className="btn btn-primary font-semibold mt-3">
-                                Contact Us
                             </Link>
                         </div>
                     </div>
@@ -117,27 +114,32 @@ const Slides = () => {
                 </SwiperSlide>
 
                 {/* Slide 5 */}
-                <SwiperSlide>
-                    <div className="relative w-full h-[450px]">
+                 <SwiperSlide>
+                    <div className="relative w-full h-[500px]">
+
                         <img
-                            src="https://i.ibb.co.com/jPThBpdr/Regulatory-Updates-In-Europe-U-S-Spell-Major-Boost-For-Organic-Agriculture.jpg"
-                            alt="Cute kitten"
+                            src='https://i.ibb.co.com/ccrtPqqT/download-16.jpg'
+                            alt="Winter Pets"
                             className="w-full h-full object-cover rounded-lg brightness-75"
                         />
-                        <div className="absolute inset-0 flex flex-col justify-center items-start px-10 text-white space-y-4">
+
+                        <div className="absolute inset-0 bg-gradient-to-b from-blue-100/40 via-white/10 to-blue-200/30"></div>
+                        <div className="absolute inset-0 flex flex-col justify-center items-start px-10 md:px-20 text-white space-y-4">
                             <h2 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
-                                Organic Products
+                                We Produce Natural Goods
                             </h2>
-                            <p className="max-w-lg text-lg text-gray-200">
-                                We offer high-quality fresh and organic foods sourced from trusted farms. Every product is naturally grown, chemical-free, and packed with pure, wholesome goodness.
+                            <p className="max-w-lg text-lg text-gray-100/90">
+                                We produce high-quality natural goods made from pure, responsibly sourced ingredients. Our products are crafted with care to support a healthier lifestyle and a cleaner planet.
                             </p>
-                            <Link className="btn btn-primary font-semibold mt-3">
-                                Learn More
+                            <Link
+                                to="/services"
+                                className="btn btn-primary font-semibold mt-3"
+                            >
+                                Explore Services
                             </Link>
                         </div>
                     </div>
                 </SwiperSlide>
-
                 
                
                        
