@@ -62,7 +62,7 @@ const NewsOrBlogs = () => {
         {/* View All Button */}
         <div className="text-center mt-12">
           <a
-            href="/blogs"
+            href=""
             className="px-8 py-3 bg-green-700 hover:bg-green-800 text-white font-semibold rounded-full shadow-lg transition"
           >
             View All Blogs

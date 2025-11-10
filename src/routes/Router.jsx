@@ -28,7 +28,8 @@ const router = createBrowserRouter([
         },
         {
             path:'/all-corps',
-            Component:AllCorps
+            Component:AllCorps,
+            loader:()=>fetch('http://localhost:3000/corps')
         },
         {
             path:'/add-corps',

@@ -6,7 +6,7 @@ const HowItWorks = () => {
       <section className="py-12 ">
       {/* <section className="py-12 bg-gradient-to-br from-green-500 via-lime-200 to-green-400"> */}
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center">How It Works</h2>
+        <h2 className="text-3xl font-bold text-center">How Our Website Works</h2>
         <p className=" text-xl font-semibold text-center mt-2">
           Follow these 4 simple steps to use our platform.
         </p>
