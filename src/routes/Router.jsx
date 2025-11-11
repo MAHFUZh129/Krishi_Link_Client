@@ -8,6 +8,8 @@ import MyPosts from "../Pages/MyPosts";
 import MyInterests from "../Pages/MyInterests";
 import Profile from "../Pages/Profile";
 import Home from "../Pages/Home";
+import CorpsDetails from "../Pages/CorpsDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +18,8 @@ const router = createBrowserRouter([
     children:[
         {
             path:'/',
-            Component:Home
+            Component:Home,
+            loader:()=>fetch('http://localhost:3000/latest-corps')
         },
         {
             path:'/login',
@@ -30,6 +33,14 @@ const router = createBrowserRouter([
             path:'/all-corps',
             Component:AllCorps,
             loader:()=>fetch('http://localhost:3000/corps')
+        },
+        {
+            path:'/corps-details/:id',
+            element: <PrivateRoute>
+                <CorpsDetails></CorpsDetails>
+            </PrivateRoute>
+            ,
+            loader:({params})=>fetch(`http://localhost:3000/corps/${params.id}`)
         },
         {
             path:'/add-corps',

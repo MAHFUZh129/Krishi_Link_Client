@@ -22,7 +22,7 @@ const Navbar = () => {
     console.log(user)
     return (
 
-         <div className="navbar py-0 min-h-0 z-1 shadow-sm  glass-card max-w-7xl">
+         <div className="navbar py-2 min-h-0 z-1 shadow-sm  glass-card max-w-7xl">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -89,7 +89,7 @@ const Navbar = () => {
         {user ? (
             <Link onClick={hanldeLogout}
             to={"/login"}
-            className="btn rounded-full border-gray-300 text-lg py-5  btn-sm bg-linear-to-r from-pink-500 to-red-500 text-white"
+            className="btn rounded-full border-gray-300 text-lg py-5  btn-sm bg-linear-to-r from-green-400 to-red-400 text-white"
           >
             {" "}
             <IoLogOut /> LogOut
@@ -98,7 +98,7 @@ const Navbar = () => {
         ) : (
           <Link
             to={"/login"}
-            className="btn rounded-full border-gray-300 text-lg py-5  btn-sm bg-linear-to-r from-pink-500 to-red-500 text-white"
+            className="btn rounded-full border-gray-300 text-lg py-5  btn-sm bg-linear-to-r from-green-400 to-red-400 text-white"
           >
             {" "}
             <IoLogIn /> Login

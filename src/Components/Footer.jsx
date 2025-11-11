@@ -28,7 +28,7 @@ const Footer = () => {
                     <div>
                         <div className='flex items-center  gap-2'>
                             <img className='h-13 w-13  rounded-full' src={logo} alt="" />
-                            <h2 className="text-3xl mt-2 font-bold text-white mb-4 tracking-tight">KrishiLink</h2>
+                            <h2 className="text-3xl mt-2 font-bold text-green-600 mb-4 tracking-tight">KrishiLink</h2>
                         </div>
                         <p className="text-sm leading-relaxed">
                             To transform the agricultural sector by eliminating intermediaries, connecting farmers directly with consumers and other stakeholders, and providing technology-driven solutions for better productivity and profitability                        </p>

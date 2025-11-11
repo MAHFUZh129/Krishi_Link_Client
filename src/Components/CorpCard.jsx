@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const CorpCard = ({corp}) => {
     // console.log(corp)
     const {name, image, type,quantity,location,
-         pricePerUnit, } = corp
+         pricePerUnit, _id} = corp
     return (
          <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
       <figure className="h-48 overflow-hidden">
@@ -29,8 +29,7 @@ const CorpCard = ({corp}) => {
             </span>
           </div>
           <Link
-        //    to={`/model-details/${_id}`}
-            // className="btn rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-red-600 hover:to-pink-500 text-white w-full btn-sm">
+          to={`/corps-details/${_id}`}
             className="btn rounded-full bg-gradient-to-br from-green-600 via-lime-500 md:p-5 to-green-500 text-xs md:text-lg md:font-bold text-white w-25 md:w-full btn-sm">
                 View Details</Link>
       </div>
