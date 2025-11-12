@@ -40,10 +40,10 @@ const CorpsDetails = () => {
                                 </div>
 
                                 <div className="badge badge-lg badge-outline text-green-600 border-green-600 font-medium">
-                                    Price:{pricePerUnit}/kg
+                                    Price:{pricePerUnit}/{unit}
                                 </div>
                                 <div className="badge badge-lg badge-outline mt-1 md:mt-0 text-green-600 border-green-600 font-medium">
-                                    Stock:{quantity}kg
+                                    Stock:{quantity}{unit}
                                 </div>
                             </div>
 

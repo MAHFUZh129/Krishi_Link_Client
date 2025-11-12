@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const CorpCard = ({corp}) => {
     // console.log(corp)
     const {name, image, type,quantity,location,
-         pricePerUnit, _id} = corp
+         pricePerUnit, _id,unit} = corp
     return (
          <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
       <figure className="h-48 overflow-hidden">
@@ -18,14 +18,14 @@ const CorpCard = ({corp}) => {
         <h2 className="card-title text-green-600 font-bold">{name}</h2>
         <div className=" bg-amber-500 text-white font-bold text-center p-1 w-20 rounded-full">{type}</div>
         
-        <p className="text-gray-600 font-semibold md:text-lg">Price: {pricePerUnit}/kg</p>
+        <p className="text-gray-600 font-semibold md:text-lg">Price: {pricePerUnit}/{unit}</p>
           <div className="md:flex  md:justify-between mb-2 ">
             <span className="md:text-lg font-semibold text-blue-600">
              
                {location}
             </span>
             <span className='text-lg font-semibold text-red-500 hidden md:block'>
-                Stock: {quantity}kg
+                Stock: {quantity} {unit}
             </span>
           </div>
           <Link
