@@ -12,15 +12,15 @@ const AddCorps = () => {
     e.preventDefault();
     setLoading(true);
 
-    const form = e.target;
+const form = e.target;
     const formData = {
       name: form.name.value,
       type: form.type.value,
       pricePerUnit: form.pricePerUnit.value,
-      unit: form.unit.value,
+     unit: form.unit.value,
       quantity: form.quantity.value,
       description: form.description.value,
-      location: form.location.value,
+    location: form.location.value,
       image: form.image.value,
       owner: {
         ownerEmail: user?.email,
@@ -34,7 +34,8 @@ const AddCorps = () => {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        if (!res.ok) throw new Error("Failed to add crop")
+        if (!res.ok)
+        
         return res.json()
       })
       .then((data) => {
