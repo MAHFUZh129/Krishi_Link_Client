@@ -31,7 +31,7 @@ const Footer = () => {
                             <h2 className="text-3xl mt-2 font-bold text-green-600 mb-4 tracking-tight">KrishiLink</h2>
                         </div>
                         <p className="text-sm leading-relaxed">
-                            To transform the agricultural sector by eliminating intermediaries, connecting farmers directly with consumers and other stakeholders, and providing technology-driven solutions for better productivity and profitability                        </p>
+                            KrishiLink is a platform dedicated <br /> to establishing a direct, transparent connection between farmers and buyers. Our mission is to empower the agricultural sector</p>
                     </div>
 
                     {/* Quick Links */}

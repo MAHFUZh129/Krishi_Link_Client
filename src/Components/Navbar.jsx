@@ -9,7 +9,7 @@ const Navbar = () => {
     
      const{user,logout} = use(AuthContext)
 
-        // console.log(user)
+        console.log(user)
         const hanldeLogout=()=>{
               logout()
               .then(() => {

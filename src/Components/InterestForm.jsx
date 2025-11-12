@@ -42,7 +42,7 @@ const InterestForm = ({ data }) => {
          },
         body: JSON.stringify(interestData),
       });
-      console.log(res)
+    //   console.log(res)
 
       if (res.ok) {
         toast.success("Interest submitted successfully!");
