@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 const AddCorps = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+//   console.log(user)
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
@@ -24,7 +25,7 @@ const form = e.target;
       image: form.image.value,
       owner: {
         ownerEmail: user?.email,
-        ownerName: user?.name,
+        ownerName: user?.displayName,
       },
     };
 
@@ -126,7 +127,7 @@ const form = e.target;
               name="description"
               required
               className="w-full border p-2 rounded mt-1"
-              placeholder="Short details about your crop"
+              placeholder="Write In details about your crop"
             ></textarea>
           </div>
 
@@ -137,7 +138,7 @@ const form = e.target;
               name="location"
               required
               className="w-full border p-2 rounded mt-1"
-              placeholder="e.g. Bogura"
+              placeholder="e.g. Meherpur"
             />
           </div>
 

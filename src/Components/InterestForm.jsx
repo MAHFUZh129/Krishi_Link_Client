@@ -1,19 +1,18 @@
-import React, { use, useState } from "react";
+import React, { useState, useContext } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../context/AuthContext";
 
-const InterestForm = ({ data }) => {
-    // console.log(data)
+const InterestForm = ({ data, unit }) => {
   const { _id: cropId, pricePerUnit } = data;
-  const {user} =use(AuthContext)
-//   console.log(user)
+  const { user } = useContext(AuthContext);
+
   const [quantity, setQuantity] = useState(0);
   const [message, setMessage] = useState("");
   const [showConfirm, setShowConfirm] = useState(false);
 
   const totalPrice = quantity * pricePerUnit;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit=(e) =>{
     e.preventDefault();
 
     if (quantity < 1) {
@@ -24,7 +23,7 @@ const InterestForm = ({ data }) => {
     setShowConfirm(true);
   };
 
-  const handleConfirm = async () => {
+  const handleConfirm = () => {
     const interestData = {
       cropId,
       userEmail: user?.email,
@@ -34,37 +33,34 @@ const InterestForm = ({ data }) => {
       status: "pending",
     };
 
-    try {
-      const res = await fetch("http://localhost:3000/interests", {
-        method: "POST",
-        headers: { "Content-Type": "application/json",
-    
-         },
-        body: JSON.stringify(interestData),
+    fetch("http://localhost:3000/interests", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(interestData),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to submit interest");
+        return res.json();
+      })
+      .then(() => {
+        toast.success("interest submitted successfully!")
+      })
+      .catch(() => {
+        toast.error(" Failed to submit interest.");
+      })
+      .then(() => {
+        setShowConfirm(false);
       });
-    //   console.log(res)
-
-      if (res.ok) {
-        toast.success("Interest submitted successfully!");
-      } else {
-        toast.error("Failed to submit interest.");
-      }
-    } catch (err) {
-      console.error(err);
-      toast.error("Something went wrong.");
-    }
-
-    setShowConfirm(false);
   };
 
   return (
-    <div className="md:mt-8 m-4 border-dotted md:border-0 border-2 md:border-l-2 py-4 px-3 md:px-15 md:pt-35 ">
+    <div className="md:mt-8 m-4 border-dotted md:border-0 border-2 md:border-l-2 py-4 px-3 md:px-15 md:pt-35">
       <h2 className="text-2xl font-bold mb-4">Send Interest</h2>
 
-      <form onSubmit={handleSubmit} className="disabled space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4">
         {/* Quantity */}
         <div>
-          <label className="block font-medium mb-1">Quantity (in kg)</label>
+          <label className="block font-medium mb-1">Quantity ({unit})</label>
           <input
             type="number"
             value={quantity}
@@ -102,14 +98,14 @@ const InterestForm = ({ data }) => {
         </button>
       </form>
 
-      {/* Confirmation  */}
+      {/* Confirmation Modal */}
       {showConfirm && (
         <dialog open className="modal">
           <div className="modal-box">
             <h3 className="font-bold text-lg">Confirm Submission</h3>
             <p className="py-4">
               Are you sure you want to send this interest request for{" "}
-              {quantity} kg?
+              {quantity} {unit}?
             </p>
             <div className="modal-action">
               <button className="btn" onClick={handleConfirm}>
@@ -127,13 +123,3 @@ const InterestForm = ({ data }) => {
 };
 
 export default InterestForm;
-
-
-
-
-
-
-
-
-
-
