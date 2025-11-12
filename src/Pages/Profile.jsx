@@ -1,62 +1,120 @@
-import React, { use } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import { FaUserEdit } from 'react-icons/fa';
+import React, { use, useState } from "react";
+import { toast } from "react-toastify";
+import { AuthContext } from "../context/AuthContext";
+import { FaEdit } from "react-icons/fa";
 
 const Profile = () => {
-    const {user}=use(AuthContext)
-    return (
-         <div className="min-h-screen gap-5 py-5 bg-gradient-to-b from-blue-100 via-amber-300 to-green-300 flex justify-center items-center px-4">
-      <div className="card w-full max-w-md bg-base-100 shadow-2xl p-6 rounded-md">
-        <div className="flex flex-col items-center text-center">
-          {/* Profile Image */}
-          <div className="avatar py-8">
-            <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img
-                src={
-                  user?.photoURL
-                    ? user.photoURL
-                    : "https://cdn-icons-png.flaticon.com/512/847/847969.png"
-                }
-                alt="User Profile"
-              />
-            </div>
-          </div>
+  const { user } = use(AuthContext);
+  const {profileUpdate}=use(AuthContext)
+  const [edit, setEdit] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: user?.displayName || "",
+    photoURL: user?.photoURL || "",
+  });
+  
 
-          {/* User Info */}
-          <h2 className="text-2xl font-bold mt-4 text-pink-700">
-            {user?.displayName }
-          </h2>
-          <p className="text-gray-600">{user?.email }</p>
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-          {/*  update Button */}
-          <div className="mt-6">
-           <button
-              className="btn btn-primary btn-wide flex items-center gap-2 font-semibold"
-            >
-              <FaUserEdit /> Update Profile
-            </button>
-          </div>
-        </div> 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-        {/*  Extra details  */}
-        <div className="divider font-bold mt-8">Account Info</div>
-        <div className="space-y-2 text-left">
-          <p>
-            <span className="font-semibold">User ID:</span>{" "}
-            <span className='text-green-800 font-semibold'>{user?.uid } </span>
-          </p>
-          <p>
-            <span className="font-semibold">Email Verified:</span>{" "}
-            <span className='text-green-900 font-semibold'>{user?.emailVerified ? " Yes" : " No"}</span>
-          </p>
-          <p>
-            <span className="font-semibold">Provider:</span>{" "}
-           <span className='text-green-800 font-semibold'>  {user?.providerData?.[0]?.providerId || "Email/Password"}</span>
-          </p>
+    profileUpdate({
+  displayName: formData.name,
+  photoURL: formData.photoURL,
+})
+  .then(() => toast.success("Profile updated successfully!"))
+  .catch((err) => toast.error(err.message));
+
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-green-100 via-amber-100 to-lime-200 flex items-center justify-center p-6">
+  <div className="w-full max-w-lg bg-white/80 backdrop-blur-md shadow-2xl rounded-3xl p-8 border border-green-200">
+    <h2 className="text-4xl text-center font-extrabold text-green-700 mb-6">
+      My Profile 
+    </h2>
+
+    {!edit ? (
+      <div className="flex flex-col items-center text-center">
+        <div className="relative group">
+          <img
+            src={user?.photoURL || "https://i.ibb.co/Zm3nY8b/user.png"}
+            alt="Profile"
+            className="md:w-38 w-28 h-28 md:h-38 rounded-full border-4 border-green-400 shadow-md group-hover:scale-105 transition-transform duration-300"
+          />
+          <div className="absolute inset-0 bg-black/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
+
+        <h3 className="text-xl font-semibold text-red-700 mt-4">
+          {user?.displayName || "No Name"}
+        </h3>
+        <p className="text-gray-600 text-sm md:text-md md:font-bold italic">{user?.email}</p>
+
+        <button
+          onClick={() => setEdit(true)}
+          className="mt-6 px-6 py-2 bg-gradient-to-r flex items-center gap-2 from-green-600 to-lime-500 text-white font-semibold rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+        >
+          <FaEdit /> Edit Profile
+        </button>
       </div>
-    </div>
-    );
+    ) : (
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-5 animate-fadeIn"
+      >
+        <div className="flex justify-center">
+          <img
+            src={formData.photoURL || "https://i.ibb.co/Zm3nY8b/user.png"}
+            alt="Preview"
+            className="w-20 h-20 rounded-full border-2 border-green-400 shadow-sm"
+          />
+        </div>
+
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Full Name"
+          className="input input-bordered w-full border-green-300 focus:border-green-500 focus:ring focus:ring-green-100"
+          required
+        />
+
+        <input
+          type="text"
+          name="photoURL"
+          value={formData.photoURL}
+          onChange={handleChange}
+          placeholder="Photo URL"
+          className="input input-bordered w-full border-green-300 focus:border-green-500 focus:ring focus:ring-green-100"
+        />
+
+        <div className="flex justify-between pt-2">
+          <button
+            type="submit"
+            disabled={loading}
+            className="px-6 py-2 bg-gradient-to-r from-green-600 to-lime-500 text-white font-semibold rounded-full shadow hover:scale-105 transition-all"
+          >
+            {loading ? "Saving..." : " Save"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setEdit(false)}
+            className="px-6 py-2 bg-gray-300 text-gray-700 font-semibold rounded-full shadow hover:bg-gray-400 hover:scale-105 transition-all"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    )}
+  </div>
+</div>
+
+  );
 };
 
 export default Profile;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut,} from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile,} from "firebase/auth";
 import { app } from '../firebase/firebase.config';
 import { GoogleAuthProvider } from 'firebase/auth';
 
@@ -29,6 +29,30 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth, googleProvider);
     }
 
+    // const profileUpdate=()=>{
+    //        setLoading(true);
+    //      return updateProfile(user,
+    //          {
+    //   displayName: formData.name,
+    //   photoURL: formData.photoURL,
+    // })
+
+    // }
+
+    const profileUpdate = (profileData) => {
+    setLoading(true);
+    return updateProfile(auth.currentUser, profileData)
+      .then(() => {
+        // firebase user object update করার পর UI refresh করার জন্য
+        setUser({ ...auth.currentUser });
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        throw err;
+      });
+  };
+
 
     const login=(email, password)=>{
                   setLoading(true)
@@ -54,7 +78,7 @@ const AuthProvider = ({children}) => {
 
      const authInfo = {
        createUser,user,setUser,loading,signInUser,
-       signInWithGoogle,login,logout
+       signInWithGoogle,login,logout,profileUpdate
        
      }
     return (
