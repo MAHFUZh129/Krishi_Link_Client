@@ -52,18 +52,17 @@ const MyPosts = () => {
       });
   };
 
-  // ❌ Handle Delete
-//   const handleDelete = (id) => {
-//     const confirmDelete = confirm("Are you sure you want to delete this crop?");
-//     if (!confirmDelete) return;
+  const handleDelete = (id) => {
+    const confirmDelete = confirm("Are you sure you want to delete this crop?");
+    if (!confirmDelete) return;
 
-//     fetch(`http://localhost:3000/corps/${id}`, { method: "DELETE" })
-//       .then((res) => res.json())
-//       .then(() => {
-//         toast.success("🗑️ Crop deleted successfully!");
-//         setCrops((prev) => prev.filter((crop) => crop._id !== id));
-//       });
-//   };
+    fetch(`http://localhost:3000/corps/${id}`, { method: "DELETE" })
+      .then((res) => res.json())
+      .then(() => {
+        toast.success(" Crop deleted successfully!");
+        setCrops((prev) => prev.filter((crop) => crop._id !== id));
+      });
+  };
 
   if (loading) {
     return (
