@@ -1,6 +1,6 @@
 Krishi Link
 
-Live Site URL: https://krishi-link.web.app
+Live Site URL: https://darling-krishi-link.netlify.app/
 
 project Overview
 

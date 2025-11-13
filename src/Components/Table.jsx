@@ -56,7 +56,7 @@ const Table = ({ _id, unit }) => {
 
   useEffect(() => {
     fetchCropData();
-  }, [_id]);
+  }, []);
 
   if (loading) {
     return <p className="text-center text-gray-500">Loading crop data...</p>;
@@ -73,6 +73,7 @@ const Table = ({ _id, unit }) => {
   return (
     <div className="md:p-8 p-2">
       <div className="md:hidden space-y-4">
+      <p className="text-xl font-semibold m-8 italic text-green-700">Received {crop.interests.length} Interests for: {crop.name}</p>
         {crop.interests.map((interest) => (
           <div
             key={interest._id}
@@ -167,7 +168,7 @@ const Table = ({ _id, unit }) => {
                       Accepted
                     </span>
                   ) : (
-                    <span className="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs">
+                    <span className="bg-red-100 text-red-700 px-2 py-1 rounded-full font-semibold text-md">
                       Rejected
                     </span>
                   )}
