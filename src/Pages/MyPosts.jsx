@@ -90,7 +90,7 @@ const MyPosts = () => {
   </h1>
 
   {/* md/lg screen */}
-  <div className="hidden md:block overflow-x-auto rounded-xl shadow">
+  <div className="hidden md:block overflow-x-auto  shadow">
     <table className="min-w-full bg-white">
       <thead className="bg-green-100">
         <tr>

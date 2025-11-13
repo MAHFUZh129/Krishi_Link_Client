@@ -1,13 +1,15 @@
-import { Link, useLoaderData } from 'react-router';
+import { Link, useLoaderData, useNavigation } from 'react-router';
 import InterestForm from '../Components/InterestForm';
 import { AuthContext } from '../context/AuthContext';
 import Table from '../Components/Table';
 import { use } from 'react';
+import Spinner from '../Components/Spinner';
 
 const CorpsDetails = () => {
 
     const data = useLoaderData()
     // console.log(data)
+     const navigation = useNavigation(); 
     const { name, image, type, quantity, location,
         pricePerUnit, _id, description, owner, unit } = data
 
@@ -16,9 +18,18 @@ const CorpsDetails = () => {
     // console.log(user)
 
 
+      if (navigation.state === "loading") {
+    return (
+      <div className="flex items-center justify-center h-screen bg-gradient-to-r from-lime-100 via-amber-200 to-green-100">
+        <Spinner></Spinner>
+        <p className="ml-3 text-green-700 font-semibold text-xl">Loading Crop Details...</p>
+      </div>
+    );
+  }
+
     return (
         <div className=" bg-linear-to-r from-lime-300 via-black to-amber-300 ">
-            <div className="max-w-4xl mx-auto p-4 md:p-6 lg:p-8">
+            <div className="max-w-4xl mx-auto p-1 md:p-2 ">
                 <div className="card bg-base-100 shadow-xl border border-gray-200 rounded-2xl overflow-hidden">
                     <div className="flex flex-col md:flex-row gap-8 p-6 md:p-8">
                         <div className="shrink-0 w-full space-y-7  md:w-1/2">
@@ -31,12 +42,12 @@ const CorpsDetails = () => {
                             <div className='bg-gray-200 rounded-lg p-4 text-xl font-semibold text-lime-800 hidden md:block '>100% Authentic, You Can Buy This Without Any doubt!!</div>
                         </div>
 
-                        <div className="flex flex-col justify-center space-y-4 w-full md:w-1/2">
+                        <div className="flex flex-col  justify-center  space-y-4 w-full md:w-1/2">
                             <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
                                 {name}
                             </h1>
 
-                            <div className="md:flex space-x-2 md:space-x-0 gap-3">
+                            <div className="md:flex  space-x-2 md:space-x-0 gap-3">
                                 <div className="badge badge-lg badge-outline text-green-600 border-green-600 font-medium">
                                     {type}
                                 </div>

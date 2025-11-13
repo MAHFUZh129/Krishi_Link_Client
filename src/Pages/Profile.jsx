@@ -2,6 +2,7 @@ import React, { use, useState } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../context/AuthContext";
 import { FaEdit } from "react-icons/fa";
+import Spinner from "../Components/Spinner";
 
 const Profile = () => {
   const { user } = use(AuthContext);
@@ -31,6 +32,13 @@ const Profile = () => {
 
   }
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <Spinner></Spinner>
+      </div>
+    )
+  }
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-100 via-amber-100 to-lime-200 flex items-center justify-center p-6">
   <div className="w-full max-w-lg bg-white/80 backdrop-blur-md shadow-2xl rounded-3xl p-8 border border-green-200">
@@ -49,7 +57,7 @@ const Profile = () => {
           <div className="absolute inset-0 bg-black/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
 
-        <h3 className="text-xl font-semibold text-red-700 mt-4">
+        <h3 className="text-xl font-semibold text-red-800 mt-4">
           {user?.displayName || "No Name"}
         </h3>
         <p className="text-gray-600 text-sm md:text-md md:font-bold italic">{user?.email}</p>

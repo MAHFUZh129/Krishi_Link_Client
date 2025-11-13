@@ -89,7 +89,7 @@ const Navbar = () => {
         {user ? (
             <Link onClick={hanldeLogout}
             to={"/login"}
-            className="btn rounded-full border-gray-300 text-lg py-5  btn-sm bg-linear-to-r from-green-400 to-red-400 text-white"
+            className="btn rounded-full border-gray-300 text-lg py-5  btn-sm bg-gradient-to-br from-green-600 via-lime-500  text-white"
           >
             {" "}
             <IoLogOut /> LogOut
@@ -98,7 +98,7 @@ const Navbar = () => {
         ) : (
           <Link
             to={"/login"}
-            className="btn rounded-full border-gray-300 text-lg py-5  btn-sm bg-linear-to-r from-green-400 to-red-400 text-white"
+            className="btn rounded-full border-gray-300 text-lg py-5  btn-sm bg-gradient-to-br from-green-600 via-lime-500  text-white"
           >
             {" "}
             <IoLogIn /> Login

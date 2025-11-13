@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import Spinner from "../Components/Spinner";
 
 const AddCorps = () => {
   const navigate = useNavigate();
@@ -51,6 +52,14 @@ const form = e.target;
         setLoading(false)
       });
   };
+
+  if (loading) {
+      return (
+        <div className="flex justify-center items-center h-64">
+          <Spinner></Spinner>
+        </div>
+      );
+    }
 
   return (
     <div className="bg-gradient-to-r from-gray-100 via-lime-200 to-gray-400 p-7">

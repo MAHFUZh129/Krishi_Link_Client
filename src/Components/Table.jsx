@@ -5,35 +5,54 @@ const Table = ({ _id, unit }) => {
   const [loading, setLoading] = useState(true);
   const [loadingId, setLoadingId] = useState(null);
 
-  const fetchCropData=()=> {
+  const fetchCropData=()=>{
     setLoading(true);
     fetch(`http://localhost:3000/corps/${_id}`)
       .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch crop");
+        if (!res.ok) throw new Error("Failed to fetch crop")
+
+
         return res.json();
       })
-      .then((data) => setCrop(data))
+      .then((data) =>
+                // console.log(data)
+         setCrop(data))
       .catch((err) => console.error("Failed to fetch crop:", err))
-      .then(() => setLoading(false));
+      .then(() =>
+         setLoading(false)
+    );
   };
 
-  const handleAction = (interestId, newStatus) =>{
+   const handleAction = (interestId, newStatus) => {
     setLoadingId(interestId);
+    const interest = crop.interests.find((i) => i._id === interestId);
+    const reduceAmount = parseInt(interest?.quantity || 0);
 
-    fetch(`http://localhost:3000/crops/${_id}/interests/${interestId}`, {
+    fetch(`http://localhost:3000/corps/${_id}/interests/${interestId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: newStatus }),
     })
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to update interest");
-        return res.json();
+      .then((res) => 
+        res.json())
+      .then(() => {
+        setCrop((prev) => ({
+          ...prev,
+          interests: prev.interests.map((i) =>
+            i._id === interestId ? { ...i, status: newStatus } : i
+          ),
+          quantity:
+            newStatus === "accepted"
+              ? prev.quantity - reduceAmount
+              : prev.quantity,
+        }));
       })
-      .then(() => fetchCropData())
-      .catch((error) =>
-         console.error("Error updating interest:", error))
-      .then(() => setLoadingId(null));
+      .then(() =>
+         setLoadingId(null)
+    )
   };
+
+  
 
   useEffect(() => {
     fetchCropData();
