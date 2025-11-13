@@ -9,7 +9,7 @@ const Navbar = () => {
     
      const{user,logout} = use(AuthContext)
 
-        console.log(user)
+        // console.log(user)
         const hanldeLogout=()=>{
               logout()
               .then(() => {
@@ -19,7 +19,7 @@ const Navbar = () => {
                  console.log(error)
               });
         }
-    console.log(user)
+    
     return (
 
          <div className="navbar py-2 min-h-0 z-1 shadow-sm  glass-card max-w-7xl">

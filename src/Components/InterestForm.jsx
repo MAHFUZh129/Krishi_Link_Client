@@ -33,7 +33,7 @@ const InterestForm = ({ data, unit }) => {
       status: "pending",
     };
 
-    fetch("http://localhost:3000/interests", {
+    fetch("https://krishilinkapi-server.vercel.app/interests", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(interestData),

@@ -10,7 +10,7 @@ import CorpCard from '../Components/CorpCard.jsx';
 const Home = () => { 
 
     const data =useLoaderData()
-    console.log(data)
+    // console.log(data)
      
     return (
         <div className=''>

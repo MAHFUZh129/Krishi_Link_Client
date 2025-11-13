@@ -30,7 +30,7 @@ const form = e.target;
       },
     };
 
-    fetch("http://localhost:3000/corps", {
+    fetch("https://krishilinkapi-server.vercel.app/corps", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),

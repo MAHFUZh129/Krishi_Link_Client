@@ -5,7 +5,7 @@ import Spinner from '../Components/Spinner';
 
 const AllCorps = () => {
     const data =useLoaderData()
-    console.log(data)
+    // console.log(data)
 
     const [corps, setCorps] = useState(data)
   const [loading, setLoading] = useState(false)
@@ -19,10 +19,10 @@ const AllCorps = () => {
     if (!search) return
     setLoading(true)
 
-    fetch(`http://localhost:3000/search?search=${search}`)
+    fetch(`https://krishilinkapi-server.vercel.app/search?search=${search}`)
     .then(res=> res.json())
     .then(data=> {
-      console.log(data)
+    //   console.log(data)
       setCorps(data)
       setLoading(false)
     })

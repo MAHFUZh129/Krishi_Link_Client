@@ -9,7 +9,7 @@ const MyInterests = () => {
 
   useEffect(() => {
     if (!user?.email) return;
-    fetch(`http://localhost:3000/my-interests?email=${user.email}`)
+    fetch(`https://krishilinkapi-server.vercel.app/my-interests?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setInterests(data);
