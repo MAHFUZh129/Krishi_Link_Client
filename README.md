@@ -2,6 +2,7 @@
 
 ## 📝 Overview
 KrishiLink is an agriculture-focused digital platform designed to connect farmers, buyers, and service providers in a seamless ecosystem. The goal of the project is to modernize agriculture by providing real-time information, marketplace access, and smart tools to help farmers increase productivity and income.
+
 ---
 
 ## 🛠️ Tech Stack
