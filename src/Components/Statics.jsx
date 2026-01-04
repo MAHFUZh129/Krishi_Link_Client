@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const ExtraSect01 = () => {
+const Statics = () => {
     const stats = [
 { id: 1, label: "Farmers Registered", value: "12,500+" },
 { id: 2, label: "Successful Deals", value: "85,000+" },
@@ -34,4 +34,4 @@ We are transforming the agricultural marketplace by empowering farmers and buyer
     );
 };
 
-export default ExtraSect01;
+export default Statics;

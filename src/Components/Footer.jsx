@@ -1,93 +1,150 @@
-import React from 'react';
-import logo from '../assets/logo.jpg';
-import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
+import React from "react";
+import logo from "../assets/logo.jpg";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { Link } from "react-router";
 
 const Footer = () => {
-    return (
-        <div>
+  return (
+    <footer className="relative text-gray-300 p-6 overflow-hidden">
+      
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 -z-10 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://i.ibb.co.com/JWV9d23t/360-F-935557880-f-HXCbtx-Fn-PDOr-Fp-Ax-Jkh-MYi2wpnu-PHo-Z.jpg')",
+        }}
+      />
+      <div className="absolute inset-0 bg-black/80 -z-10"></div>
 
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-10">
 
-            <footer className=" relative bg-white-900 text-gray-300 py-16 px-5 overflow-hidden">
-
-                <div
-                    className="absolute inset-0 -z-10"
-                    style={{
-                        backgroundImage: `url('https://i.ibb.co.com/JWV9d23t/360-F-935557880-f-HXCbtx-Fn-PDOr-Fp-Ax-Jkh-MYi2wpnu-PHo-Z.jpg')`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        
-                    }}
-                />
-
-                <div className="absolute inset-0 bg-black opacity-70 -z-10"></div>
-
-                <div className=" max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 z-10">
-
-                    {/* Logo & About */}
-                    <div>
-                        <div className='flex items-center  gap-2'>
-                            <img className='h-13 w-13  rounded-full' src={logo} alt="" />
-                            <h2 className="text-3xl mt-2 font-bold text-green-600 mb-4 tracking-tight">KrishiLink</h2>
-                        </div>
-                        <p className="text-sm leading-relaxed">
-                            KrishiLink is a platform dedicated <br /> to establishing a direct, transparent connection between farmers and buyers. Our mission is to empower the agricultural sector</p>
-                    </div>
-
-                    {/* Quick Links */}
-                    <div className='md:mt-2 md:ml-10 '>
-                        <h3 className="text-xl font-semibold text-white mb-8">Quick Links</h3>
-                        <ul className="space-y-3">
-                            <li className="hover:text-white cursor-pointer transition duration-300">Home</li>
-                            <li className="hover:text-white cursor-pointer transition duration-300">About</li>
-                            <li className="hover:text-white cursor-pointer transition duration-300">Services</li>
-                            <li className="hover:text-white cursor-pointer transition duration-300">Contact</li>
-                        </ul>
-                    </div>
-
-                    {/* Support */}
-                    <div className='mt-2'>
-                        <h3 className="text-xl font-semibold text-white mb-8">Explore</h3>
-                        <ul className="space-y-3">
-                            <li className="hover:text-white cursor-pointer transition duration-300">What We Offer</li>
-                            <li className="hover:text-white cursor-pointer transition duration-300">Latest News</li>
-                            <li className="hover:text-white cursor-pointer transition duration-300">Project</li>
-                            <li className="hover:text-white cursor-pointer transition duration-300">Terms & Conditions</li>
-                            <li className="hover:text-white cursor-pointer transition duration-300">Privacy Policy</li>
-                        </ul>
-                    </div>
-                    {/* Services */}
-                    <div className='mt-2'>
-                        <h3 className="text-xl font-semibold text-white mb-8">Service</h3>
-                        <ul className="space-y-3">
-                            <li className="hover:text-white cursor-pointer transition duration-300">Agriculture Products</li>
-                            <li className="hover:text-white cursor-pointer transition duration-300"> Organic Products</li>
-                            <li className="hover:text-white cursor-pointer transition duration-300">Fresh Vegetables</li>
-                            <li className="hover:text-white cursor-pointer transition duration-300"> Dairy Products</li>
-                            <li className="hover:text-white cursor-pointer transition duration-300">Vegetable Firms</li>
-                            <li className="hover:text-white cursor-pointer transition duration-300">Water Management</li>
-                            <li className="hover:text-white cursor-pointer transition duration-300">Farm House</li>
-                        </ul>
-                    </div>
-
-                    {/* Social Media */}
-                    <div className='mt-2'>
-                        <h3 className="text-xl font-semibold text-white mb-8">Follow Us</h3>
-                        <div className="flex space-x-6 text-3xl">
-                            <FaFacebook className="hover:text-blue-500 cursor-pointer transition duration-300" />
-                            <FaInstagram className="hover:text-pink-500 cursor-pointer transition duration-300" />
-                            <FaLinkedin className="hover:text-blue-600 cursor-pointer transition duration-300" />
-                            <FaXTwitter className="hover:text-white cursor-pointer transition duration-300" />
-                        </div>
-                    </div>
-                </div>
-
-                <div className=" text-center border-t border-gray-700 mt-12 pt-6 text-sm text-gray-400">
-                    © {new Date().getFullYear()} MyWebsite — All Rights Reserved.
-                </div>
-            </footer>
+        {/* Brand */}
+        <div className="md:col-span-2">
+          <div className="flex items-center gap-3 mb-4">
+            <img src={logo} className="w-12 h-12 rounded-full" alt="logo" />
+            <h2 className="text-[28px] italic font-bold text-green-600">
+              Krishi<span className="text-lime-500">Link</span>
+            </h2>
+          </div>
+          <p className="text-sm leading-relaxed text-gray-400 max-w-md">
+            KrishiLink builds a transparent bridge between farmers and buyers,
+            empowering agriculture through trust, technology, and fair trade.
+          </p>
         </div>
-    );
+
+       
+{/* Quick Links */}
+<div>
+  <h3 className="text-lg font-semibold text-white mb-6">Quick Links</h3>
+  <ul className="space-y-3 text-sm">
+    <li>
+      <Link
+        to="/"
+        className="hover:text-green-400 transition"
+      >
+        Home
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/about"
+        className="hover:text-green-400 transition"
+      >
+        About
+      </Link>
+    </li>
+
+    
+
+    <li>
+      <Link
+        to="/contact"
+        className="hover:text-green-400 transition"
+      >
+        Contact
+      </Link>
+    </li>
+    <li>
+      <Link to=''
+        className="hover:text-green-400 transition"
+      >
+        Services
+      </Link>
+    </li>
+  </ul>
+</div>
+
+        {/* Explore */}
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-6">Explore</h3>
+          <ul className="space-y-3 text-sm">
+            {[
+              "What We Offer",
+              "Latest News",
+              "Projects",
+              "Terms & Conditions",
+              "Privacy Policy",
+            ].map((item) => (
+              <li
+                key={item}
+                className="hover:text-green-400 transition cursor-pointer"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Services */}
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-6">Services</h3>
+          <ul className="space-y-3 text-sm">
+            {[
+              "Agriculture Products",
+              "Organic Products",
+              "Fresh Vegetables",
+              "Dairy Products",
+              "Farm Houses",
+            ].map((item) => (
+              <li
+                key={item}
+                className="hover:text-green-400 transition cursor-pointer"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Social + Bottom */}
+      <div className="border-t border-white/10 mt-14 py-8">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+          
+          {/* Social */}
+          <div className="flex gap-6 text-2xl">
+            <FaFacebook className="hover:text-blue-500 transition cursor-pointer" />
+            <FaInstagram className="hover:text-pink-500 transition cursor-pointer" />
+            <FaLinkedin className="hover:text-blue-600 transition cursor-pointer" />
+            <FaXTwitter className="hover:text-white transition cursor-pointer" />
+          </div>
+
+          {/* Copyright */}
+          <p className="text-sm text-gray-400 text-center">
+            © {new Date().getFullYear()} KrishiLink — All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

@@ -1,83 +1,87 @@
-import React, { useState } from 'react';
-import CorpCard from '../Components/CorpCard';
-import { useLoaderData } from 'react-router';
-import Spinner from '../Components/Spinner';
+import React, { useState } from "react";
+import CorpCard from "../Components/CorpCard";
+import { useLoaderData } from "react-router";
+import Spinner from "../Components/Spinner";
+import { FaSearch } from "react-icons/fa";
 
 const AllCorps = () => {
-    const data =useLoaderData()
-    // console.log(data)
+  const data = useLoaderData();
+  const [corps, setCorps] = useState(data);
+  const [loading, setLoading] = useState(false);
 
-    const [corps, setCorps] = useState(data)
-  const [loading, setLoading] = useState(false)
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const search = e.target.search.value.trim();
+    if (!search) return;
 
-
-     const handleSearch = (e) => { 
-    e.preventDefault()
-    const search = e.target.search.value.trim()
-
-    // console.log(search)
-    if (!search) return
-    setLoading(true)
+    setLoading(true);
 
     fetch(`https://krishilinkapi-server.vercel.app/search?search=${search}`)
-    .then(res=> res.json())
-    .then(data=> {
-    //   console.log(data)
-      setCorps(data)
-      setLoading(false)
-    })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        setCorps(data);
+        setLoading(false);
+      });
+  };
 
-
-  
-  
-
-
-if (loading) {
+  if (loading) {
     return (
-      <div className="flex justify-center items-center h-[60vh] ">
-        <Spinner></Spinner>
+      <div className="flex justify-center items-center min-h-[60vh] bg-gradient-to-br from-green-100 to-lime-100">
+        <Spinner />
       </div>
     );
   }
 
-    return (
-        <div className='bg-gradient-to-r from-amber-200 via-yellow-300 to-green-700'>
-         
-            <div className="text-3xl text-green-600 text-center pt-7 font-bold"> All Corps</div>
-            <p className=" text-center text-xl font-semibold text-white ">Explore Corps Here.</p>
-            {/* <search></search> */}
-        <form onSubmit={handleSearch} className='space-x-1 flex  justify-end mx-6 md:mr-5 mt-2 md:mt-8'>
-               <label className="input rounded-full  ">
-  <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <g
-      strokeLinejoin="round"
-      strokeLinecap="round"
-      strokeWidth="2.5"
-      fill="none"
-      stroke="currentColor"
-    >
-      <circle cx="11" cy="11" r="8"></circle>
-      <path d="m21 21-4.3-4.3"></path>
-    </g>
-  </svg>
-  <input type="search" name='search' placeholder="Search" />
-</label>
-<button className="btn btn-primary font-semibold">{loading?'Searching....':'Search'}</button>
+  return (
+    <section className="min-h-screen bg-gradient-to-br from-green-700 via-lime-500 to-yellow-400 pb-16">
 
-         </form>
-            <div className="grid p-5 grid-cols-2 md:grid-cols-3 gap-3">
-                
-                {corps.length === 0 ? (
-          <div className="col-span-full text-center text-red-600 italic font-bold text-4xl mt-10">
-            No results found
+      {/* Header */}
+      <div className="text-center pt-12 px-4">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
+          Explore All Crops
+        </h1>
+        <p className="mt-3 text-lg text-white/90 font-medium">
+          Fresh, verified & directly from farmers
+        </p>
+      </div>
+
+      {/* Search */}
+      <form
+        onSubmit={handleSearch}
+        className="mt-8 flex justify-center px-4"
+      >
+        <div className="flex w-full max-w-xl bg-white rounded-full shadow-xl overflow-hidden">
+          <input
+            type="search"
+            name="search"
+            placeholder="Search crops by name ...."
+            className="flex-1 px-6 py-3 outline-none text-gray-700"
+          />
+          <button
+            className="bg-green-600 hover:bg-green-700 text-white px-6 flex items-center gap-2 font-semibold transition"
+          >
+            <FaSearch />
+            Search
+          </button>
+        </div>
+      </form>
+
+      {/* Corps Grid */}
+      <div className="max-w-7xl mx-auto mt-12 px-4">
+        {corps.length === 0 ? (
+          <div className="text-center italic text-white text-3xl font-bold mt-16">
+            No crops found
           </div>
         ) : (
-          corps.map((corp) => <CorpCard key={corp._id} corp={corp} />)
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {corps.map((corp) => (
+              <CorpCard key={corp._id} corp={corp} />
+            ))}
+          </div>
         )}
-            </div>
-        </div>
-    );
+      </div>
+    </section>
+  );
 };
 
 export default AllCorps;

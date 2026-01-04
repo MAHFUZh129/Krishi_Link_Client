@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from "react";
 
 const blogs = [
   {
@@ -27,13 +26,20 @@ const blogs = [
 
 const NewsOrBlogs = () => {
   return (
-    <section className="py-16 bg-gradient-to-br from-green-600 via-lime-300 to-green-200">
+    <section className="py-9 bg-gradient-to-br from-green-50 via-lime-50 to-green-100">
       <div className="max-w-7xl mx-auto px-4">
+        
         {/* Heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-white">Agro News & Blogs</h2>
-          <p className="text-green-100 mt-2 max-w-2xl mx-auto">
-            Stay updated with the latest agriculture news, tips, and informative articles.
+        <div className="text-center mb-14">
+          <h2
+            className="text-3xl md:text-4xl font-extrabold
+            bg-gradient-to-r from-green-700 via-lime-600 to-green-700
+            bg-clip-text text-transparent"
+          >
+            Agro News & Blogs
+          </h2>
+          <p className="text-gray-600 mt-3 max-w-2xl mx-auto text-lg">
+            Latest agriculture updates, expert tips, and farmer-focused stories
           </p>
         </div>
 
@@ -42,31 +48,52 @@ const NewsOrBlogs = () => {
           {blogs.map((blog) => (
             <div
               key={blog.id}
-              className="bg-white rounded-md shadow-lg hover:shadow-2xl transition p-4 flex flex-col"
+              className="group bg-white rounded-2xl overflow-hidden
+              shadow-md hover:shadow-2xl transition-all duration-300
+              hover:-translate-y-2 flex flex-col"
             >
-              <img
-                src={blog.image}
-                alt={blog.title}
-                className="w-full h-48 object-cover rounded-lg"
-              />
-              <p className="text-sm text-green-600 mt-3">{blog.date}</p>
-              <h3 className="text-lg font-semibold mt-2">{blog.title}</h3>
-              <p className="text-gray-700 text-sm mt-1 flex-grow">{blog.desc}</p>
-              <button className="mt-4 text-green-700 font-medium hover:underline text-left">
-                Read More →
-              </button>
+              {/* Image */}
+              <div className="overflow-hidden">
+                <img
+                  src={blog.image}
+                  alt={blog.title}
+                  className="w-full h-52 object-cover
+                  group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="p-5 flex flex-col flex-grow">
+                <span className="text-sm font-semibold text-green-600">
+                  {blog.date}
+                </span>
+
+                <h3 className="text-xl font-bold mt-2 text-gray-800 group-hover:text-green-700 transition">
+                  {blog.title}
+                </h3>
+
+                <p className="text-gray-600 text-sm mt-2 flex-grow">
+                  {blog.desc}
+                </p>
+
+                <button className="mt-5 inline-flex items-center gap-2 text-green-700 font-semibold hover:gap-3 transition-all">
+                  Read More
+                  <span>→</span>
+                </button>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* View All Button */}
-        <div className="text-center mt-12">
-          <a
-            href=""
-            className="px-8 py-3 bg-green-700 hover:bg-green-800 text-white font-semibold rounded-full shadow-lg transition"
+        {/* View All */}
+        <div className="text-center mt-16">
+          <button
+            className="px-10 py-3 rounded-full font-bold text-white
+            bg-gradient-to-r from-green-600 via-lime-500 to-green-600
+            hover:scale-105 transition shadow-lg"
           >
             View All Blogs
-          </a>
+          </button>
         </div>
       </div>
     </section>

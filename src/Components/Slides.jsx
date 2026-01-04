@@ -1,153 +1,139 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { Link } from 'react-router';
-
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Link } from "react-router";
 
 const Slides = () => {
-    return (
-        <div>
-            <Swiper
-                spaceBetween={30}
-                slidesPerView={1}
-                loop={true}
-                autoplay={{ delay: 4000 }}
-                pagination={{ clickable: true }}
-                navigation={true}
-                modules={[Navigation, Pagination, Autoplay]}
-            >
-
-                {/* Slide 1 */}
-                <SwiperSlide>
-                    <div className="relative w-full h-[450px]">
-                        <img
-                            src="https://i.ibb.co.com/jPThBpdr/Regulatory-Updates-In-Europe-U-S-Spell-Major-Boost-For-Organic-Agriculture.jpg"
-                            alt="Cute kitten"
-                            className="w-full h-full object-cover rounded-lg brightness-75"
-                        />
-                        <div className="absolute inset-0 flex flex-col justify-center items-start px-10 text-white space-y-4">
-                            <h2 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
-                                Buy Fresh, Local, Seasonal Crops
-                            </h2>
-                            <p className="max-w-lg text-lg text-gray-200">
-                                We offer high-quality fresh and organic foods sourced from trusted farms. Every product is naturally grown, chemical-free, and packed with pure, wholesome goodness.
-                            </p>
-                            <Link className="btn btn-primary font-semibold mt-3">
-                                Learn More
-                            </Link>
-                        </div>
-                    </div>
-                </SwiperSlide>
-
-               
-
-                {/* Slide 2 */}
-                <SwiperSlide>
-                    <div className="relative w-full h-[500px]">
-                        <img
-                            src="https://i.ibb.co.com/QvxyR6Rd/bop-low-input-owner-og.jpg"
-                            alt="Winter Dog"
-                            className="w-full h-full object-cover rounded-lg brightness-75"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-b from-blue-300/40 via-white/10 to-blue-400/40"></div>
-                        <div className="absolute inset-0 flex flex-col justify-center items-start px-10 md:px-20 text-white space-y-4">
-                            <h2 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
-                                Buy Fresh Dairy Milk, Local, Seasonal Crops
-                            </h2>
-                            <p className="max-w-lg text-lg text-gray-100/90">
-                                We specialize in high-quality fresh and organic foods, carefully selected from sustainable and ethical farms. Enjoy authentic flavors, superior nutrition, and nature’s purest quality in every bite.
-                            </p>
-                            <Link className="btn btn-primary font-semibold mt-3">
-                                Contact Us
-                            </Link>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                
-                {/* Slide 3 */}
-                <SwiperSlide>
-                    <div className="relative w-full h-[500px]">
-                        <img
-                            src="https://i.ibb.co.com/m53XZj4j/download-15.jpg"
-                            alt="Winter Kitten"
-                            className="w-full h-full object-cover rounded-lg brightness-75"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-b from-blue-200/40 via-white/10 to-blue-300/40"></div>
-                        <div className="absolute inset-0 flex flex-col justify-center items-start px-10 md:px-20 text-white space-y-4">
-                            <h2 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
-                                Organic Foodies & Veggies
-                            </h2>
-                            <p className="max-w-lg text-lg text-gray-100/90">
-                                We provide high-quality organic foods and farm-fresh vegetables, cultivated without chemicals or preservatives. Pure taste, honest farming, and clean nutrition for mindful eaters.
-                            </p>
-                            <Link className="btn btn-primary font-semibold mt-3">
-                                Learn More
-                            </Link>
-                        </div>
-                    </div>
-                </SwiperSlide>
-
-                {/* Slide 4 */}
-                <SwiperSlide>
-                    <div className="relative w-full h-[450px]">
-                        <img
-                            src="https://i.ibb.co.com/4gpWRwdg/images-5.jpg"
-
-                            alt="Pets"
-                            className="w-full h-full object-cover rounded-lg brightness-75"
-                        />
-                        <div className="absolute inset-0 flex flex-col justify-center items-start px-10 text-white space-y-4">
-                            <h2 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
-                                Fresh, Organic Fish, Goat, And Poultry—Naturally Raised AND Chemical-Free
-                            </h2>
-                            <p className="max-w-lg text-lg text-gray-200">
-                                We provide high-quality, fresh, and organic fish, goat, and poultry products sourced from healthy, naturally raised animals. Free from chemicals and antibiotics, our meats deliver pure taste and trusted nutrition.
-                            </p>
-                            <Link to="/services" className="btn btn-primary font-semibold mt-3">
-                                Explore Services
-                            </Link>
-                        </div>
-                    </div>
-                </SwiperSlide>
-
-                {/* Slide 5 */}
-                 <SwiperSlide>
-                    <div className="relative w-full h-[500px]">
-
-                        <img
-                            src='https://i.ibb.co.com/ccrtPqqT/download-16.jpg'
-                            alt="Winter Pets"
-                            className="w-full h-full object-cover rounded-lg brightness-75"
-                        />
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-blue-100/40 via-white/10 to-blue-200/30"></div>
-                        <div className="absolute inset-0 flex flex-col justify-center items-start px-10 md:px-20 text-white space-y-4">
-                            <h2 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
-                                We Produce Natural Goods
-                            </h2>
-                            <p className="max-w-lg text-lg text-gray-100/90">
-                                We produce high-quality natural goods made from pure, responsibly sourced ingredients. Our products are crafted with care to support a healthier lifestyle and a cleaner planet.
-                            </p>
-                            <Link
-                                to="/services"
-                                className="btn btn-primary font-semibold mt-3"
-                            >
-                                Explore Services
-                            </Link>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                
-               
-                       
-            </Swiper>
-
-
+  return (
+    <Swiper
+      slidesPerView={1}
+      loop
+      autoplay={{ delay: 4500, disableOnInteraction: false }}
+      pagination={{ clickable: true }}
+      navigation
+      modules={[Navigation, Pagination, Autoplay]}
+      className=" overflow-hidden"
+    >
+      {/* Slide 1 */}
+      <SwiperSlide>
+        <div className="relative h-[440px] md:h-[540px]">
+          <img
+            src="https://i.ibb.co.com/jPThBpdr/Regulatory-Updates-In-Europe-U-S-Spell-Major-Boost-For-Organic-Agriculture.jpg"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/55 flex items-center">
+            <div className="px-6 md:px-20 text-white max-w-2xl space-y-5">
+              <h2 className="text-3xl md:text-5xl font-extrabold leading-tight">
+                Fresh & Organic Crops Marketplace
+              </h2>
+              <p className="text-sm md:text-lg opacity-90">
+                KrishiLink connects farmers and buyers in one trusted digital platform. 
+                Buy fresh, seasonal, and chemical-free crops directly from local farms.
+              </p>
+              <div className="flex gap-4">
+                <Link
+                  to="/all-corps"
+                  className="px-7 py-3 bg-green-600 hover:bg-green-700 rounded-full font-semibold transition"
+                >
+                  Browse Crops
+                </Link>
+                <Link
+                  to="/about"
+                  className="px-7 py-3 border border-white/80 rounded-full hover:bg-white hover:text-green-700 font-semibold transition"
+                >
+                  Learn More
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-    );
+      </SwiperSlide>
+
+      {/* Slide 2 */}
+      <SwiperSlide>
+        <div className="relative h-[440px] md:h-[540px]">
+          <img
+            src="https://i.ibb.co.com/QvxyR6Rd/bop-low-input-owner-og.jpg"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/65 to-black/25 flex items-center">
+            <div className="px-6 md:px-20 text-white max-w-2xl space-y-5">
+              <h2 className="text-3xl md:text-5xl font-extrabold">
+                Dairy, Grains & Farm Essentials
+              </h2>
+              <p className="text-sm md:text-lg opacity-90">
+                Explore farm-fresh dairy, grains, and essentials sourced from 
+                sustainable and ethical producers ensuring purity and nutrition.
+              </p>
+              <Link
+                to="/all-corps"
+                className="px-7 py-3 bg-lime-500 text-black rounded-full font-semibold hover:scale-105 transition"
+              >
+                Explore Products
+              </Link>
+            </div>
+          </div>
+        </div>
+      </SwiperSlide>
+
+      {/* Slide 3 */}
+      <SwiperSlide>
+        <div className="relative h-[440px] md:h-[540px]">
+          <img
+            src="https://i.ibb.co.com/MknDZ2Gx/organic.webp"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/55 flex items-center">
+            <div className="px-6 md:px-20 text-white max-w-2xl space-y-5">
+              <h2 className="text-3xl md:text-5xl font-extrabold">
+                Organic Vegetables & Fruits
+              </h2>
+              <p className="text-sm md:text-lg opacity-90">
+                Get freshly harvested vegetables and fruits grown without harmful 
+                chemicals—supporting healthy families and fair farming.
+              </p>
+              <Link
+                to="/dashboard"
+                className="px-7 py-3 bg-green-600 rounded-full font-semibold hover:bg-green-800 transition"
+              >
+                Go to Dashboard
+              </Link>
+            </div>
+          </div>
+        </div>
+      </SwiperSlide>
+
+      {/* Slide 4 */}
+      <SwiperSlide>
+        <div className="relative h-[440px] md:h-[540px]">
+          <img
+            src="https://i.ibb.co.com/YTyH7KjV/popular-types-of-birds-1440x961.jpg"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/55 flex items-center">
+            <div className="px-6 md:px-20 text-white max-w-2xl space-y-5">
+              <h2 className="text-3xl md:text-5xl font-extrabold">
+                Fish, Livestock & Poultry
+              </h2>
+              <p className="text-sm md:text-lg opacity-90">
+                Buy fresh fish, goat, and poultry products from naturally raised 
+                livestock—free from harmful additives and antibiotics.
+              </p>
+              <Link
+                to="/contact"
+                className="px-7 py-3 border border-white rounded-full hover:bg-white hover:text-green-700 font-semibold transition"
+              >
+                Contact Sellers
+              </Link>
+            </div>
+          </div>
+        </div>
+      </SwiperSlide>
+    </Swiper>
+  );
 };
 
 export default Slides;

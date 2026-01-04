@@ -3,26 +3,39 @@ import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { Link, NavLink } from 'react-router';
 import logo from '../assets/logo.jpg'
-import { IoLogIn, IoLogOut } from 'react-icons/io5';
+import { IoHomeOutline, IoLogIn, IoLogOut } from 'react-icons/io5';
+import { GiPlantSeed, GiWheat } from "react-icons/gi";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import { FiPhoneCall } from "react-icons/fi";
+import { FaRegPlusSquare } from 'react-icons/fa';
+import { MdOutlineSpaceDashboard } from 'react-icons/md';
+
 
 const Navbar = () => {
-    
-     const{user,logout} = use(AuthContext)
 
-        // console.log(user)
-        const hanldeLogout=()=>{
-              logout()
-              .then(() => {
-             toast.success("Sign-out Successful")
-              })
-              .catch((error) => {
-                 console.log(error)
-              });
-        }
-    
-    return (
+  const { user, logout } = use(AuthContext)
 
-         <div className="navbar py-2 min-h-0 z-1 shadow-sm  glass-card max-w-7xl">
+  // console.log(user)
+  const hanldeLogout = () => {
+    logout()
+      .then(() => {
+        toast.success("Sign-out Successful")
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  }
+  const isActive = ({ isActive }) =>
+    `flex items-center py-2 rounded-lg font-medium transition
+     ${isActive
+      ? "bg-green-600 text-white"
+      : "text-gray-700 hover:bg-green-100 hover:text-green-700"}`;
+
+  return (
+
+    <div className='navbar py-2 min-h-0 
+sticky top-0 z-70 bg-green-50 
+shadow-md border-b border-green-200 ' >
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -44,61 +57,78 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex="-1"
-            className="menu menu-sm  font-semibold dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm space-y-2 font-semibold dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-              
-              <li  ><Link className='text-[16px] hover:text-amber-600' to='/'>Home</Link></li>
-                  <li><Link className='text-[16px] hover:text-amber-600' to='/all-corps'>All Corps</Link></li>
-    
-    {user && (
-    <>
-      <li><Link className='text-[16px] hover:text-amber-600' to="/add-corps">Add Corps</Link></li>
-      <li><Link className='text-[16px] hover:text-amber-600' to="/my-interests">My Interests</Link></li>
-      <li><Link className='text-[16px] hover:text-amber-600' to="/my-posts">My Posts</Link></li>
-      <li><Link className='text-[16px] hover:text-amber-600' to="/profile">My Profile</Link></li>
-    </>
-  )}
-            
+
+            <li  ><NavLink className={isActive}
+              to='/'> <IoHomeOutline />
+              Home</NavLink></li>
+            <li><NavLink className={isActive} to='/all-corps'> <GiPlantSeed />
+              All Corps</NavLink></li>
+
+
+            {user && (
+              <li><NavLink className={isActive} to="/dashboard"><MdOutlineSpaceDashboard />
+                Dashboard</NavLink></li>
+
+            )}
+
+            <li><NavLink className={isActive} to='/about'><AiOutlineInfoCircle />
+              About Us</NavLink></li>
+            <li><NavLink className={isActive} to='/contact'><FiPhoneCall />
+              Contact</NavLink></li>
           </ul>
         </div>
         <Link to={"/"} className="flex items-center gap-1 text-xl font-bold">
-        <div className='flex items-center gap-2'>
-    <img className='h-12 w-15 rounded-full' src={logo} alt="" />
-    <h3 className='text-2xl text-green-600 font-bold hidden md:block'>Krishi<span className='text-green-400'>Link</span></h3>
-    </div>
-        
+          <div className='flex items-center gap-2'>
+            <img className='h-10 w-13 rounded-full hidden md:block ' src={logo} alt="" />
+            <h3 className="text-2xl italic md:text-2xl font-bold 
+text-green-700 drop-shadow-md tracking-wide">
+              Krishi<span className="text-lime-500 ">Link
+              </span>
+            </h3>
+
+
+          </div>
+
         </Link>
       </div>
       <div className="navbar-center hidden md:flex">
-        <ul className="menu menu-horizontal  px-1 gap-5">
-            <Link className='text-gray-600 hover:text-amber-600 font-bold ' to='/'>Home</Link>
-                  
-    <Link className='text-gray-600 font-bold hover:text-amber-600' to='/all-corps'>All Corps</Link>
-    
-    {
-        user &&(<div className='flex  text-gray-600 font-bold gap-5'>
-    <Link className='hover:text-amber-600' to='/add-corps'>Add Corps</Link>
-    <Link className='hover:text-amber-600' to='/my-interests'>My Interests</Link>
-    <Link className='hover:text-amber-600' to='/my-posts'>My Posts</Link>
-    <Link className='hover:text-amber-600' to='/profile'>My Profile</Link>
-    </div>)}
-           
+        <ul className="menu menu-horizontal space-x-2  ">
+          <li  ><NavLink className={isActive}
+            to='/'>  <IoHomeOutline />
+            Home</NavLink></li>
+          <li><NavLink className={isActive} to='/all-corps'><GiPlantSeed />
+
+            All Corps</NavLink></li>
+
+          {user && (
+            <li><NavLink className={isActive} to="/dashboard"><MdOutlineSpaceDashboard />
+              Dashboard</NavLink></li>
+
+          )}
+          <li><NavLink className={isActive} to='/about'><AiOutlineInfoCircle />
+            About Us</NavLink></li>
+          <li><NavLink className={isActive} to='/contact'><FiPhoneCall />
+
+            Contact</NavLink></li>
+
         </ul>
       </div>
       <div className="navbar-end gap-3">
         {user ? (
-            <Link onClick={hanldeLogout}
+          <Link onClick={hanldeLogout}
             to={"/login"}
-            className="btn rounded-full border-gray-300 text-lg py-5  btn-sm bg-gradient-to-br from-green-600 via-lime-500  text-white"
+            className="btn rounded-full border-gray-300 text-[15px] py-5  btn-sm bg-gradient-to-r from-green-600 via-lime-500 to-green-600  text-white"
           >
             {" "}
             <IoLogOut /> LogOut
           </Link>
-        
+
         ) : (
           <Link
             to={"/login"}
-            className="btn rounded-full border-gray-300 text-lg py-5  btn-sm bg-gradient-to-br from-green-600 via-lime-500  text-white"
+            className="btn rounded-full border-gray-300 text-[15px] py-5  btn-sm bg-gradient-to-r from-green-600 via-lime-500 to-green-600 text-white"
           >
             {" "}
             <IoLogIn /> Login
@@ -106,7 +136,7 @@ const Navbar = () => {
         )}
       </div>
     </div>
-    );
+  );
 };
 
 export default Navbar;

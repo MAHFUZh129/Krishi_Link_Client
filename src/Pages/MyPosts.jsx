@@ -84,7 +84,7 @@ const MyPosts = () => {
   }
 
   return (
-    <div className="p-4 md:p-6 bg-gradient-to-r from-lime-100 via-amber-200 to-green-100 min-h-screen">
+    <div className="p-4  md:py-19 bg-gradient-to-r from-lime-100 via-amber-200 to-green-100 min-h-screen">
   <h1 className="text-2xl md:text-3xl font-bold text-green-700 text-center mb-6">
     My Crop Posts
   </h1>

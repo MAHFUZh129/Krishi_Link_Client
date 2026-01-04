@@ -1,6 +1,6 @@
 import React from "react";
 
- const ExtraSect02=()=> {
+ const Feedback=()=> {
 
 const testimonials = [
 {
@@ -31,10 +31,12 @@ image: "https://i.ibb.co.com/s95dxK4J/download-18.jpg",
 
 
 return (
-<section className="py-14 bg-gradient-to-br from-pink-100 via-lime-200 to-green-200">
+<section className="py-10 bg-gradient-to-br from-pink-100 via-lime-200 to-green-200">
 <div className="max-w-7xl mx-auto px-4">
-<h2 className="text-3xl font-bold text-center">What Our Users Say</h2>
-<p className="text-green-800 font-bold text-center mt-2 max-w-xl mx-auto">
+<h2 className="text-center text-3xl md:text-4xl font-extrabold
+          bg-gradient-to-r from-green-700 via-lime-500 to-green-700
+          bg-clip-text text-transparent">What Our Users Say</h2>
+<p className="text-gray-600 font-bold text-center mt-2 max-w-xl mx-auto">
 Real feedback from farmers and buyers using our platform.
 </p>
 
@@ -61,4 +63,4 @@ className="w-34 h-34 rounded-full mx-auto object-cover"
 );
 }
 
-export default ExtraSect02;
+export default Feedback;

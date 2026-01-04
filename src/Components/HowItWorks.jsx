@@ -1,52 +1,74 @@
-import React from 'react';
+import React from "react";
+import { FaUserPlus, FaSeedling, FaComments, FaHandshake } from "react-icons/fa";
 
 const HowItWorks = () => {
   return (
-    <div>
-      <section className="py-12 ">
-      {/* <section className="py-12 bg-gradient-to-br from-green-500 via-lime-200 to-green-400"> */}
+    <section className="py-10 bg-gradient-to-br from-green-100 via-lime-100 to-green-100">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center">How Our Website Works</h2>
-        <p className=" text-xl font-semibold text-center mt-2">
-          Follow these 4 simple steps to use our platform.
+        
+        {/* Heading */}
+        <h2
+          className="text-center text-3xl md:text-4xl font-extrabold
+          bg-gradient-to-r from-green-700 via-lime-500 to-green-700
+          bg-clip-text text-transparent"
+        >
+          How KrishiLink Works
+        </h2>
+
+        <p className="text-center text-gray-600 text-lg font-medium mt-3">
+          4 simple steps to connect farmers and buyers
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-10">
-           {/* Step 1  */}
-          <div className="bg-gradient-to-r from-blue-300 to-cyan-300 p-6 rounded-xl shadow">
-            <h3 className="text-xl font-semibold mb-2">1. Create an Account</h3>
-            <p className="text-red-500  font-semibold">
+        {/* Steps */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+          
+          <div className="group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition hover:-translate-y-2 text-center">
+            <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center rounded-full
+              bg-green-100 text-green-600 text-2xl group-hover:scale-110 transition">
+              <FaUserPlus />
+            </div>
+            <h3 className="text-xl font-bold mb-2">Create an Account</h3>
+            <p className="text-gray-600 font-medium">
               Sign up as a farmer or buyer within a minute.
             </p>
           </div>
 
-          {/* Step 2 */}
-          <div className="bg-gradient-to-r from-blue-300 to-cyan-300 p-6 rounded-xl shadow">
-            <h3 className="text-xl font-semibold mb-2">2. Post or Browse Crops</h3>
-            <p className="text-red-500 font-semibold">
-              Farmers post crops & buyers search for what they need.
+          <div className="group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition hover:-translate-y-2 text-center">
+            <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center rounded-full
+              bg-lime-100 text-lime-600 text-2xl group-hover:scale-110 transition">
+              <FaSeedling />
+            </div>
+            <h3 className="text-xl font-bold mb-2">Post or Browse Crops</h3>
+            <p className="text-gray-600 font-medium">
+              Farmers post crops & buyers find what they need.
             </p>
           </div>
 
-          {/* Step 3 */}
-          <div className="bg-gradient-to-r from-blue-300 to-cyan-300 p-6 rounded-xl shadow">
-            <h3 className="text-xl font-semibold mb-2">3. Connect & Chat</h3>
-            <p className="text-red-500 font-semibold">
-              Contact each other to negotiate price and details.
+          <div className="group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition hover:-translate-y-2 text-center">
+            <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center rounded-full
+              bg-emerald-100 text-emerald-600 text-2xl group-hover:scale-110 transition">
+              <FaComments />
+            </div>
+            <h3 className="text-xl font-bold mb-2">Connect & Chat</h3>
+            <p className="text-gray-600 font-medium">
+              Discuss price and details directly.
             </p>
           </div>
 
-          {/* Step 4 */}
-          <div className="bg-gradient-to-r from-blue-300 to-cyan-300 p-6 rounded-xl shadow">
-            <h3 className="text-xl font-semibold mb-2">4. Finalize the Deal</h3>
-            <p className="text-red-500 font-semibold">
-              Confirm the deal and arrange pickup or delivery.
+          <div className="group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition hover:-translate-y-2 text-center">
+            <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center rounded-full
+              bg-amber-100 text-amber-600 text-2xl group-hover:scale-110 transition">
+              <FaHandshake />
+            </div>
+            <h3 className="text-xl font-bold mb-2">Finalize the Deal</h3>
+            <p className="text-gray-600 font-medium">
+              Confirm and arrange pickup or delivery.
             </p>
           </div>
+
         </div>
       </div>
     </section>
-    </div>
   );
 };
 

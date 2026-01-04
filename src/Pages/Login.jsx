@@ -12,6 +12,10 @@ const Login = () => {
     const {login,signInWithGoogle,}=use(AuthContext);
     const location=useLocation();
     const navigate=useNavigate();
+   
+
+const from = location.state?.from || "/";
+
     // console.log(location)
     const [err,setErr]=useState("")
 
@@ -26,13 +30,11 @@ const Login = () => {
         login(email,password)
         .then((result)=>{
            const user =result.user
-        //    console.log(user)
            toast.success("Logged In Successfully");
-           navigate(`${location.state?location.state:"/"}`)
+          navigate(from, { replace: true });
         })
         .catch((error) => {
-    // const errorCode = error.code;
-    // const errorMessage = error.message;
+    
     setErr('Password is Incorrect')
   });
 
@@ -43,9 +45,8 @@ const Login = () => {
       signInWithGoogle()
       .then((result)=>{
            const user =result.user
-        //    console.log(user)
            toast.success("Logged In With Google Successfully");
-           navigate(`${location.state?location.state:"/"}`)
+          navigate(from, { replace: true });
            
         })
          .catch((error) => {
@@ -57,7 +58,6 @@ const Login = () => {
     return (
         <div className="relative min-h-screen flex items-center justify-center p-5 overflow-hidden">
   
-  {/* ব্যাকগ্রাউন্ড ইমেজ */}
   <div 
     className="absolute inset-0 -z-10"
     style={{
