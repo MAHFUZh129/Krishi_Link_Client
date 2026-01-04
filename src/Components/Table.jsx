@@ -7,7 +7,7 @@ const Table = ({ _id, unit }) => {
 
   const fetchCropData=()=>{
     setLoading(true);
-    fetch(`https://krishilinkapi-server.vercel.app/corps/${_id}`)
+    fetch(`http://localhost:5000/corps/${_id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch crop")
 
@@ -28,7 +28,7 @@ const Table = ({ _id, unit }) => {
     const interest = crop.interests.find((i) => i._id === interestId);
     const reduceAmount = parseInt(interest?.quantity || 0);
 
-    fetch(`https://krishilinkapi-server.vercel.app/corps/${_id}/interests/${interestId}`, {
+    fetch(`http://localhost:5000/corps/${_id}/interests/${interestId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status: newStatus }),

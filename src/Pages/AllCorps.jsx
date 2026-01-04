@@ -1,32 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CorpCard from "../Components/CorpCard";
-import { useLoaderData } from "react-router";
 import Spinner from "../Components/Spinner";
 import { FaSearch } from "react-icons/fa";
 
 const AllCorps = () => {
-  const data = useLoaderData();
-  const [corps, setCorps] = useState(data);
-  const [loading, setLoading] = useState(false);
+  const [corps, setCorps] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    const search = e.target.search.value.trim();
-    if (!search) return;
+  const [search, setSearch] = useState("");
+  const [type, setType] = useState("all");
+  const [location, setLocation] = useState("all");
+  const [sort, setSort] = useState("");
 
+  const fetchCorps = () => {
     setLoading(true);
 
-    fetch(`https://krishilinkapi-server.vercel.app/search?search=${search}`)
-      .then((res) => res.json())
-      .then((data) => {
+    let url = `http://localhost:5000/corps?`;
+
+    if (search) url += `search=${search}&`;
+    if (type !== "all") url += `type=${type}&`;
+    if (location !== "all") url += `location=${location}&`;
+    if (sort) url += `sort=${sort}`;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
         setCorps(data);
         setLoading(false);
       });
   };
 
+  useEffect(() => {
+    fetchCorps(); // load all initially
+  }, []);
+
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-[60vh] bg-gradient-to-br from-green-100 to-lime-100">
+      <div className="flex justify-center items-center min-h-[60vh]">
         <Spinner />
       </div>
     );
@@ -36,45 +46,127 @@ const AllCorps = () => {
     <section className="min-h-screen bg-gradient-to-br from-green-700 via-lime-500 to-yellow-400 pb-16">
 
       {/* Header */}
-      <div className="text-center pt-12 px-4">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
+      <div className="text-center pt-12">
+        <h1 className="text-4xl font-extrabold text-white">
           Explore All Crops
         </h1>
-        <p className="mt-3 text-lg text-white/90 font-medium">
-          Fresh, verified & directly from farmers
+        <p className="text-white/90 mt-2">
+          Search, filter & sort crops easily
         </p>
       </div>
 
-      {/* Search */}
-      <form
-        onSubmit={handleSearch}
-        className="mt-8 flex justify-center px-4"
-      >
-        <div className="flex w-full max-w-xl bg-white rounded-full shadow-xl overflow-hidden">
+      {/* search */}
+      <div className="mt-8 flex justify-center px-4">
+        <div className="flex w-full max-w-xl bg-white rounded-full overflow-hidden">
           <input
-            type="search"
-            name="search"
-            placeholder="Search crops by name ...."
-            className="flex-1 px-6 py-3 outline-none text-gray-700"
+            type="text"
+            placeholder="Search by crop name..."
+            onChange={(e) => setSearch(e.target.value)}
+            className="flex-1 px-6 py-3 outline-none"
           />
           <button
-            className="bg-green-600 hover:bg-green-700 text-white px-6 flex items-center gap-2 font-semibold transition"
+            onClick={fetchCorps}
+            className="bg-green-600 text-white px-6 flex items-center gap-2"
           >
-            <FaSearch />
-            Search
+            <FaSearch /> Search
           </button>
         </div>
-      </form>
+      </div>
 
-      {/* Corps Grid */}
+      {/*  filter and sort */}
+     
+<div className="max-w-6xl mx-auto mt-10 px-4">
+  <div
+    className="
+      bg-white/20 backdrop-blur-xl
+      border border-white/30
+      rounded-3xl shadow-2xl
+      p-6 md:p-8
+      transition
+    "
+  >
+    <h3 className="text-white text-xl font-bold mb-6 text-center tracking-wide">
+      Filter & Sort Crops 
+    </h3>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+
+      {/* Category */}
+      <select
+        onChange={(e) => setType(e.target.value)}
+        className="
+          p-3 rounded-xl bg-white text-gray-800
+          shadow-md hover:shadow-xl
+          focus:outline-none focus:ring-2 focus:ring-green-500
+          transition
+        "
+      >
+        <option value="all"> All Categories</option>
+        <option value="Fruit"> Fruit</option>
+        <option value="Vegetable"> Vegetable</option>
+        <option value="Grain"> Grain</option>
+      </select>
+
+      {/* Location */}
+      <select
+        onChange={(e) => setLocation(e.target.value)}
+        className="
+          p-3 rounded-xl bg-white text-gray-800
+          shadow-md hover:shadow-xl
+          focus:outline-none focus:ring-2 focus:ring-green-500
+          transition
+        "
+      >
+        <option value="all"> All Locations</option>
+        <option value="Tangail">Tangail</option>
+        <option value="Dhaka">Dhaka</option>
+        <option value="Rajshahi">Rajshahi</option>
+      </select>
+
+      {/* Sort */}
+      <select
+        onChange={(e) => setSort(e.target.value)}
+        className="
+          p-3 rounded-xl bg-white text-gray-800
+          shadow-md hover:shadow-xl
+          focus:outline-none focus:ring-2 focus:ring-green-500
+          transition
+        "
+      >
+        <option value=""> Sort By</option>
+        <option value="price_asc"> Price: Low → High</option>
+        <option value="price_desc"> Price: High → Low</option>
+        <option value="latest"> Latest</option>
+      </select>
+
+      {/* apply button */}
+      <button
+        onClick={fetchCorps}
+        className="
+          rounded-xl
+          bg-gradient-to-r from-green-600 to-lime-500
+          text-white font-semibold
+          hover:scale-105 hover:shadow-2xl
+          transition duration-300
+        "
+      >
+        Apply Filters
+      </button>
+
+    </div>
+  </div>
+</div>
+
+
+      {/*  grid*/}
       <div className="max-w-7xl mx-auto mt-12 px-4">
         {corps.length === 0 ? (
-          <div className="text-center italic text-white text-3xl font-bold mt-16">
+          <p className="text-center text-white text-3xl font-bold">
             No crops found
-          </div>
+          </p>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {corps.map((corp) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {corps.map(corp => (
               <CorpCard key={corp._id} corp={corp} />
             ))}
           </div>

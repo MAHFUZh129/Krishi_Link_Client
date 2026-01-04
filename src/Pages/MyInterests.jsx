@@ -18,7 +18,7 @@ const MyInterests = () => {
     if (!user?.email) return;
 
     fetch(
-      `https://krishilinkapi-server.vercel.app/my-interests?email=${user.email}`
+      `http://localhost:5000/my-interests?email=${user.email}`
     )
       .then((res) => {
         if (!res.ok) throw new Error("Failed to load interests");

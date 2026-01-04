@@ -31,7 +31,7 @@ const AddCorps = () => {
       },
     };
 
-    fetch("https://krishilinkapi-server.vercel.app/corps", {
+    fetch("http://localhost:5000/corps", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
