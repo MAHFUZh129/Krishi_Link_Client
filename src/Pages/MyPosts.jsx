@@ -15,7 +15,7 @@ const MyPosts = () => {
 
   useEffect(() => {
     if (!user?.email) return;
-    fetch(`http://localhost:5000/my-posts?email=${user.email}`)
+    fetch(`https://krishilinkapi-server.vercel.app/my-posts?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setCrops(data);
@@ -38,7 +38,7 @@ const MyPosts = () => {
       image: form.image.value,
     };
 
-    fetch(`http://localhost:5000/corps/${editingCrop._id}`, {
+    fetch(`https://krishilinkapi-server.vercel.app/corps/${editingCrop._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedData),
@@ -59,7 +59,7 @@ const MyPosts = () => {
     const confirmDelete = confirm("Are you sure you want to delete this crop?")
     if (!confirmDelete) return;
 
-    fetch(`http://localhost:5000/corps/${id}`, { method: "DELETE" })
+    fetch(`https://krishilinkapi-server.vercel.app/corps/${id}`, { method: "DELETE" })
       .then((res) => res.json())
       .then(() => {
         toast.success(" Crop deleted successfully!");

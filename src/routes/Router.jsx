@@ -23,7 +23,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 Component: Home,
-                loader: () => fetch('http://localhost:5000/latest-corps')
+                loader: () => fetch('https://krishilinkapi-server.vercel.app/latest-corps')
             },
             {
                 path: '/login',
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
             {
                 path: '/all-corps',
                 Component: AllCorps,
-                loader: () => fetch('http://localhost:5000/corps')
+                loader: () => fetch('https://krishilinkapi-server.vercel.app/corps')
             },
             {
                 path: '/about',
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
                     <CorpsDetails></CorpsDetails>
                 
                 ,
-                loader: ({ params }) => fetch(`http://localhost:5000/corps/${params.id}`)
+                loader: ({ params }) => fetch(`https://krishilinkapi-server.vercel.app/corps/${params.id}`)
             },
             
             

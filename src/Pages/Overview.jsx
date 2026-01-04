@@ -10,11 +10,11 @@ const DashboardOverview = () => {
   const [crops, setCrops] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/dashboard-overview")
+    fetch("https://krishilinkapi-server.vercel.app/dashboard-overview")
       .then(res => res.json())
       .then(data => setStats(data));
 
-    fetch("http://localhost:5000/corps")
+    fetch("https://krishilinkapi-server.vercel.app/corps")
       .then(res => res.json())
       .then(data => setCrops(data));
   }, []);

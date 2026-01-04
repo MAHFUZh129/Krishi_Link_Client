@@ -12,7 +12,7 @@ import Statics from "../Components/Statics";
 
 const Home = () => {
   const data = useLoaderData();
-
+// console.log(data)
   return (
     <div className="bg-base-100">
 
@@ -60,7 +60,7 @@ const Home = () => {
         </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 px-5">
-          {data?.slice(0, 6).map((corp) => (
+          {data?.map((corp) => (
             <CorpCard key={corp._id} corp={corp} />
           ))}
         </div>
@@ -74,7 +74,7 @@ const Home = () => {
           </Link>
         </div>
       </section>
-      {/* SMALL SECTIONS */}
+      {/* small section */}
       <OurServices />
       <WhyChooseUs />
       <HowItWorks />

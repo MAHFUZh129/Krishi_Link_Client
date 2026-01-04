@@ -15,7 +15,7 @@ const AllCorps = () => {
   const fetchCorps = () => {
     setLoading(true);
 
-    let url = `http://localhost:5000/corps?`;
+    let url = `https://krishilinkapi-server.vercel.app/corps?`;
 
     if (search) url += `search=${search}&`;
     if (type !== "all") url += `type=${type}&`;
